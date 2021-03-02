@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
+
+namespace Project_fis
+{
+    class CommonConnect
+    {
+        //Phương thức kết nối chung 
+
+        private SqlConnection conn;
+        //Trả về đối tượng kết nối
+        public SqlConnection Connected()
+        {
+            string conect = SystemInformation.UserDomainName.ToString();
+
+            string source = "Data Source=" + conect + "\\SQLEXPRESS;Initial Catalog=QuanLyDiem;Integrated Security=True";
+            conn = new SqlConnection(source);
+            conn.Open();
+            return conn;
+        }
+    }
+}
